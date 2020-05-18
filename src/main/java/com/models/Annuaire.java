@@ -20,14 +20,7 @@ public class Annuaire {
 	/**
 	 * Constructeur privé
 	 */
-	private Annuaire() {
-		try {
-			ListeDeResto = FactoryDao.getInstance().getRestaurantDao().getListeResto();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	private Annuaire() { }
 	
 	/**
 	 * Recuppere la seul instance d'Annuaire
@@ -40,7 +33,7 @@ public class Annuaire {
 	}
 	
 	/**
-	 * Ajoute un resto a l'annuaire (ajoute en memoire et actualise sa liste)
+	 * Ajoute un resto a l'annuaire (ajoute en base et actualise sa liste)
 	 * @param resto
 	 */
 	public void addResto(Restaurant resto) {
@@ -48,11 +41,28 @@ public class Annuaire {
 			FactoryDao.getInstance().getRestaurantDao().creat(resto);
 			actialiserListeDeResto();
 		} catch (SQLException e) {
+			System.out.println("ajout resto en base echoué");
 			e.printStackTrace();
 		}
 	}
 	
-	private void actialiserListeDeResto() {
+	/**
+	 * Supprime un resto par son id dans l'annuaire (suppression en base et actualise sa liste)
+	 * @param i
+	 */
+	public void delRestoId(int i) {
+		try {
+			FactoryDao.getInstance().getRestaurantDao().deleteById(i);
+			actialiserListeDeResto();
+		} catch (SQLException e) {
+			System.out.println("suppression resto en base echoué");
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * Mets a jours la liste de resto de l'annuaire par rapport a la base de données
+	 */
+	public void actialiserListeDeResto() {
 		try {
 			ListeDeResto = FactoryDao.getInstance().getRestaurantDao().getListeResto();
 		} catch (SQLException e) {

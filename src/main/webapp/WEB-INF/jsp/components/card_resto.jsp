@@ -10,8 +10,13 @@
 		<small>${variable.getSpecialite()}</small>
 		<div>
 
-			<a href="/AnnuaireRestaurant/modifier?id=${variable.getId()}"
-				class="text-decoration-none"><small>Supprimer</small></a> &nbsp;
+			<form id="form${variable.getId()}" class="form" method="post" action="annuaire">
+				<input class="form" type="search" style="visibility: hidden"
+					id="supprimer" name="supprimer" value="${variable.getId()}" /> 
+					<a href="javascript:{}"
+					class="text-decoration-none"
+					onclick="document.getElementById('form${variable.getId()}').submit(); return false;"><small>Supprimer</small></a>&nbsp;
+			</form>
 
 		</div>
 	</div>

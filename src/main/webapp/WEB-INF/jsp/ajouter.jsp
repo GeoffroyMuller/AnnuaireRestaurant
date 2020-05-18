@@ -13,7 +13,7 @@
 	<br>
 	<br>
 	<form class="form-inline mx-auto p-4 w-50 " method="post"
-		action="annuaire">
+		action="ajouter">
 		<div class="form-inline mx-auto p-4 w-100">
 
 			<div class="d-flex w-100 justify-content-between">
@@ -59,7 +59,7 @@
 			</div>
 			<div class="d-flex  justify-content-between">
 				<div class="input-group mb-3 ">
-					<a href="/AnnuaireRestaurant/ajouter" class="btn btn-outline-primary"type="submit">Enregistrer</a>
+					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Enregistrer</button>
 					&nbsp;&nbsp; 
 					<a href="/AnnuaireRestaurant/ajouter" type="button"
 						class="btn btn-outline-danger">Annuler</a>
@@ -67,10 +67,6 @@
 
 			</div>
 		</div>
-
-
-
-
 	</form>
 	<br>
 </body>

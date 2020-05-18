@@ -30,6 +30,7 @@ public class ServletAnnuaire extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Annuaire.getInstance().actialiserListeDeResto();
 		request.setAttribute("liste", Annuaire.getInstance().getListeDeResto());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
@@ -39,10 +40,20 @@ public class ServletAnnuaire extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nom = request.getParameter("nom");
-		String specialite = request.getParameter("specialite");
-		List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNom(nom);
-		request.setAttribute("liste", listeResto);
+		if (request.getParameter("supprimer") != null) {
+				System.out.println("::::::"+request.getParameter("supprimer"));
+            	Annuaire.getInstance().delRestoId(Integer.parseInt(""+request.getParameter("supprimer")));
+            	Annuaire.getInstance().actialiserListeDeResto();
+        		List<Restaurant> listeResto = Annuaire.getInstance().getListeDeResto();
+        		request.setAttribute("liste", listeResto);
+        }
+		if (request.getParameter("button_chercher") != null) {
+        		String nom = request.getParameter("nom");
+        		String specialite = request.getParameter("specialite");
+        		List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNom(nom);
+        		request.setAttribute("liste", listeResto);
+        }
+
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
 

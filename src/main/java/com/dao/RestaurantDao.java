@@ -25,13 +25,21 @@ public class RestaurantDao {
 	}
 
 	public void creat(Restaurant resto) throws SQLException {
-		String sql = "INSERT INTO `restaurant` (`id`, `nom`, `adresse`, `specialite`) VALUES (NULL, ?, ?, ?);";
+		String sql = "INSERT INTO restaurant (`id`, `nom`, `adresse`, `specialite`) VALUES (NULL, ?, ?, ?);";
 		PreparedStatement pstmt = DataBase.getInstance().prepareStatement(sql);
 		pstmt.setString(1, resto.getNom());
 		pstmt.setString(2, resto.getAdresse());
 		pstmt.setString(3, resto.getSpecialite());
-		ResultSet rs = pstmt.executeQuery();
-		
+		pstmt.executeUpdate();
+		pstmt.close();
+	}
+	
+	public void deleteById(int id) throws SQLException {
+		String sql = "DELETE FROM `restaurant` WHERE `restaurant`.`id` = ?;";
+		PreparedStatement pstmt = DataBase.getInstance().prepareStatement(sql);
+		pstmt.setInt(1, id);
+		pstmt.executeUpdate();
+		pstmt.close();
 	}
 
 	/**

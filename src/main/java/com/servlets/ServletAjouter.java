@@ -6,19 +6,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.models.Annuaire;
+import com.models.Restaurant;
+
 /**
  * Servlet implementation class ServletAjouter
  */
 public class ServletAjouter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletAjouter() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ServletAjouter() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +36,12 @@ public class ServletAjouter extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nom = request.getParameter("nom");
+		String adresse = request.getParameter("adresse");
+		String specialite= request.getParameter("specialite");
+		System.out.println("resto ajouté");
+		Annuaire.getInstance().addResto(new Restaurant(nom, adresse, specialite));
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ajouter.jsp").forward(request, response);
 	}
 
 }

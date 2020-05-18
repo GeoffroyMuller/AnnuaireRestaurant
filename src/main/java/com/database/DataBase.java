@@ -12,7 +12,7 @@ public class DataBase {
 	public static Connection getInstance() {
 		try {
 			if(DataBase.instance == null) {
-				Class.forName("com.mysql.jdbc.Driver");
+				Class.forName("com.mysql.cj.jdbc.Driver");
 				String urlBDD = "jdbc:mysql://localhost:3306/annuaire_resto?serverTimezone=UTC";
 				DataBase.instance = DriverManager.getConnection(urlBDD, "root", "");
 			}
