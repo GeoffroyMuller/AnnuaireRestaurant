@@ -11,6 +11,13 @@ public class Restaurant {
 	private String specialite;
 	private List<Plat> listeDePlats;
 	
+	public Restaurant(String nom, String adresse, String specialite) {
+		this.nom = nom;
+		this.adresse = adresse;
+		this.specialite = specialite;
+		this.listeDePlats = null;
+	}
+	
 	public Restaurant(int id, String nom, String adresse, String specialite, List<Plat> listeDePlats) {
 		this.id = id;
 		this.nom = nom;

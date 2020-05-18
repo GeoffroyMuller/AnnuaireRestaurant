@@ -24,6 +24,15 @@ public class RestaurantDao {
 		return instance;
 	}
 
+	public void creat(Restaurant resto) throws SQLException {
+		String sql = "INSERT INTO `restaurant` (`id`, `nom`, `adresse`, `specialite`) VALUES (NULL, ?, ?, ?);";
+		PreparedStatement pstmt = DataBase.getInstance().prepareStatement(sql);
+		pstmt.setString(1, resto.getNom());
+		pstmt.setString(2, resto.getAdresse());
+		pstmt.setString(3, resto.getSpecialite());
+		ResultSet rs = pstmt.executeQuery();
+		
+	}
 
 	/**
 	 * Retourne la liste des restaurant  
@@ -42,7 +51,7 @@ public class RestaurantDao {
 				listePlat = 
 						FactoryDao.getInstance().getPlatDao().getListePlatByRestaurant(rs.getInt("id"));
 			}catch (SQLException e) {
-
+				e.printStackTrace();
 			}
 			listeResto.add(new Restaurant(
 					rs.getInt("id"),
@@ -51,7 +60,6 @@ public class RestaurantDao {
 					rs.getString("specialite"),
 					listePlat));
 		}
-		System.out.println("!!"+listeResto);
 		return listeResto;
 	}
 

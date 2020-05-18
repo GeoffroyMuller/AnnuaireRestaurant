@@ -2,6 +2,7 @@ package com.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,9 +30,6 @@ public class ServletAnnuaire extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ArrayList<Restaurant> listetest = new ArrayList<Restaurant>();
-		//listetest.add(new Restaurant("namee", "addree", "spee",  null));
-		//listetest.add(new Restaurant("namee2", "addree2", "spee2",  null));
 		request.setAttribute("liste", Annuaire.getInstance().getListeDeResto());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
@@ -41,7 +39,11 @@ public class ServletAnnuaire extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nom = request.getParameter("nom");
+		String specialite = request.getParameter("specialite");
+		List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNom(nom);
+		request.setAttribute("liste", listeResto);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
 
 }

@@ -1,11 +1,29 @@
-<a href="/AnnuaireRestaurant/restaurant?id=${variable.getId()}"
-	class="list-group-item list-group-item-action mx-auto p-4 bg-light w-50">
+<div
+	class="list-group-item list-group-item-action mx-auto  bg-light w-50">
 	<div class="d-flex w-100 justify-content-between">
 		<p class="mb-1">${variable.getNom()}</p>
-		<p class="mb-1">${variable.getAdresse()}</p>
+		<a href="/AnnuaireRestaurant/restaurant?id=${variable.getId()}"
+			class="btn btn-success btn-sm">Voir le Resto</a>
 	</div>
-	<p class="mb-1">${variable.getSpecialite()}</p>
 
+	<div class="d-flex w-100 justify-content-between">
+		<small>${variable.getSpecialite()}</small>
+		<div>
 
-</a>
+			<a href="/AnnuaireRestaurant/modifier?id=${variable.getId()}"
+				class="text-decoration-none"><small>Supprimer</small></a> &nbsp;
+
+		</div>
+	</div>
+	<div class="d-flex w-100 justify-content-between">
+		<small>${variable.getAdresse()}</small>
+		<div>
+			<a href="/AnnuaireRestaurant/modifier?id=${variable.getId()}"
+				class="text-decoration-none"><small>Modifier</small></a> &nbsp;
+
+		</div>
+
+	</div>
+
+</div>
 

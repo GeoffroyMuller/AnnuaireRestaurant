@@ -24,7 +24,7 @@ public class PlatDao {
 	
 	public List<Plat> getListePlatByRestaurant(int id) throws SQLException{
 	  	String sql = 
-	  			"SELECT * FROM contient JOIN plat ON contient.id = plat.id WHERE contient.id = ?";
+	  			"SELECT * FROM contient JOIN plat ON contient.id_plat = plat.id WHERE contient.id_restaurant = ?";
 	  	List<Plat> listePlat = new ArrayList<Plat>();
         PreparedStatement pstmt = DataBase.getInstance().prepareStatement(sql);
         pstmt.setInt(1, id);

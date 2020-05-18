@@ -33,6 +33,14 @@
 		<servlet-name>ServletRestaurant</servlet-name>
 		<servlet-class>com.servlets.ServletRestaurant</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletModifier</servlet-name>
+		<servlet-class>com.servlets.ServletModifier</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServletAjouter</servlet-name>
+		<servlet-class>com.servlets.ServletAjouter</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Servlet</servlet-name>
@@ -53,6 +61,14 @@
 	<servlet-mapping>
 		<servlet-name>ServletRestaurant</servlet-name>
 		<url-pattern>/restaurant</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletModifier</servlet-name>
+		<url-pattern>/modifier</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletAjouter</servlet-name>
+		<url-pattern>/ajouter</url-pattern>
 	</servlet-mapping>
 
 </web-app>

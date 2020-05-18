@@ -1,5 +1,5 @@
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
 <!-- Custom fonts for this template -->
@@ -15,9 +15,15 @@
 
 <nav class="navbar navbar-dark bg-dark">
 	<div class="container">
-		<a class="navbar-brand js-scroll-trigger" href="/AnnuaireRestaurant/annuaire">Trouve Ton Resto</a>
+		<a class="navbar-brand js-scroll-trigger"
+			href="/AnnuaireRestaurant/annuaire">Annuaire Resto</a>
+		<div class="justify-content-between">
+
+				&nbsp;
+			<a href="/AnnuaireRestaurant/ajouter" type="button"
+				class="btn btn-success">Ajouter un resto</a>
+		</div>
 	</div>
 </nav>
-
 
 </head>

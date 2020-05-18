@@ -6,33 +6,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.models.Annuaire;
-import com.models.Restaurant;
-
 /**
- * Servlet implementation class ServletRestaurant
+ * Servlet implementation class ServletModifier
  */
-public class ServletRestaurant extends HttpServlet {
+public class ServletModifier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public ServletRestaurant() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ServletModifier() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
-		Restaurant resto = Annuaire.getInstance().getRestoById(Integer.parseInt(id));
-		request.setAttribute("resto", resto);
-		request.setAttribute("liste_plat", resto.getListeDePlats());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/modifier.jsp").forward(request, response);
 	}
 
 	/**
