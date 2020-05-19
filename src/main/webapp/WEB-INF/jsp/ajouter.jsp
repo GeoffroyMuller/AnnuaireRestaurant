@@ -62,12 +62,21 @@
 					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Enregistrer</button>
 					&nbsp;&nbsp; 
 					<a href="/AnnuaireRestaurant/ajouter" type="button"
-						class="btn btn-outline-danger">Annuler</a>
+						class="btn btn-outline-danger">Effacer</a>
 				</div>
 
 			</div>
 		</div>
 	</form>
 	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
+
+<%@ include file="components/footer.jsp"%>
+
 </html>

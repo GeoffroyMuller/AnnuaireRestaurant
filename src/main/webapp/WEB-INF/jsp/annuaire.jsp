@@ -12,8 +12,6 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
 	<form class="form-inline mx-auto p-4 w-50 " method="post"
 		action="annuaire">
 		<div class="form-inline mx-auto p-4 w-75" >
@@ -29,5 +27,15 @@
 	<c:forEach items="${liste}" var="variable">
 		<%@ include file="components/card_resto.jsp"%>
 	</c:forEach>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
+
+<%@ include file="components/footer.jsp"%>
+
 </html>

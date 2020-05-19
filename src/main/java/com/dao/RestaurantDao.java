@@ -34,6 +34,17 @@ public class RestaurantDao {
 		pstmt.close();
 	}
 	
+	public void update(Restaurant resto) throws SQLException {
+		String sql = "UPDATE `restaurant` SET `nom` = ?, `adresse` = ?, `specialite` = ? WHERE `restaurant`.`id` = ?;";
+		PreparedStatement pstmt = DataBase.getInstance().prepareStatement(sql);
+		pstmt.setString(1, resto.getNom());
+		pstmt.setString(2, resto.getAdresse());
+		pstmt.setString(3, resto.getSpecialite());
+		pstmt.setInt(4, resto.getId());
+		pstmt.executeUpdate();
+		pstmt.close();
+	}
+	
 	public void deleteById(int id) throws SQLException {
 		String sql = "DELETE FROM `restaurant` WHERE `restaurant`.`id` = ?;";
 		PreparedStatement pstmt = DataBase.getInstance().prepareStatement(sql);

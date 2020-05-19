@@ -2,15 +2,27 @@ package com.models;
 
 public class Plat {
 
+	private int id; 
+	private int id_resto; 
 	private String nom;
 	private double prix;
-	private String typeDePlat;
+	private String type;
 	private String description;
 
-	public Plat(String nom, double prix, String typeDePlat, String description) {
+	public Plat(int id_resto, String nom, double prix, String typeDePlat, String description) {
+		this.id_resto = id_resto;
 		this.nom = nom;
 		this.prix = prix;
-		this.typeDePlat = typeDePlat;
+		this.type = typeDePlat;
+		this.description = description;
+	}
+	
+	public Plat(int id, int id_resto, String nom, double prix, String typeDePlat, String description) {
+		this.id = id;
+		this.id_resto = id_resto;
+		this.nom = nom;
+		this.prix = prix;
+		this.type = typeDePlat;
 		this.description = description;
 	}
 
@@ -33,12 +45,12 @@ public class Plat {
 		this.prix = prix;
 	}
 
-	public String getTypeDePlat() {
-		return typeDePlat;
+	public String getType() {
+		return type;
 	}
 
-	public void setTypeDePlat(String typeDePlat) {
-		this.typeDePlat = typeDePlat;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getDescription() {
@@ -47,6 +59,22 @@ public class Plat {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId_resto() {
+		return id_resto;
+	}
+
+	public void setId_resto(int id_resto) {
+		this.id_resto = id_resto;
 	}
 	
 	

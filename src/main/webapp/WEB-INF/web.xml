@@ -26,10 +26,6 @@
 		<servlet-class>com.servlets.ServletAnnuaire</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ServletIndex</servlet-name>
-		<servlet-class>com.servlets.ServletIndex</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>ServletRestaurant</servlet-name>
 		<servlet-class>com.servlets.ServletRestaurant</servlet-class>
 	</servlet>
@@ -43,20 +39,8 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>Servlet</servlet-name>
-		<url-pattern>/urltest</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Servlet2</servlet-name>
-		<url-pattern>/urltest2</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 		<servlet-name>ServletAnnuaire</servlet-name>
 		<url-pattern>/annuaire</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ServletIndex</servlet-name>
-		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ServletRestaurant</servlet-name>

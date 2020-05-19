@@ -16,7 +16,7 @@
 	<div class="mx-auto w-50">
 		<div class="d-flex w-100 justify-content-between">
 			<h4>${ resto.getNom() }
-				<a href="/AnnuaireRestaurant/modifier?id=${variable.getId()}"
+				<a href="/AnnuaireRestaurant/modifier?id=${resto.getId()}&red=restaurant"
 					class="badge badge-primary">Modifier</a>
 			</h4>
 
@@ -37,6 +37,15 @@
 	<c:forEach items="${liste_plat}" var="variable">
 		<%@ include file="components/card_plat.jsp"%>
 	</c:forEach>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
+
+<%@ include file="components/footer.jsp"%>
+
 </html>

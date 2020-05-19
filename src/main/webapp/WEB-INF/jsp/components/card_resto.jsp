@@ -23,7 +23,7 @@
 	<div class="d-flex w-100 justify-content-between">
 		<small>${variable.getAdresse()}</small>
 		<div>
-			<a href="/AnnuaireRestaurant/modifier?id=${variable.getId()}"
+			<a href="/AnnuaireRestaurant/modifier?id=${variable.getId()}&red=annuaire"
 				class="text-decoration-none"><small>Modifier</small></a> &nbsp;
 
 		</div>
