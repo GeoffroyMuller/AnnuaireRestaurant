@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.models.Annuaire;
+import com.models.Plat;
 import com.models.Restaurant;
 
 /**
@@ -39,8 +40,16 @@ public class ServletRestaurant extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int id = Integer.parseInt(request.getParameter("id"));
+		String nom = request.getParameter("nom");
+		String type = request.getParameter("type");
+		double prix = Double.parseDouble(request.getParameter("prix"));
+		String description= request.getParameter("description");
+		Annuaire.getInstance().getRestoById(id).addPlat(new Plat(id, nom, prix, type, description));
+		String urlRed = "/AnnuaireRestaurant/restaurant?id="+id;
+		response.sendRedirect(urlRed);
+		return;
+
 	}
 
 }

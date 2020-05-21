@@ -59,7 +59,7 @@
 			</div>
 			<div class="d-flex  justify-content-between">
 				<div class="input-group mb-3 ">
-					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Enregistrer</button>
+					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Ajouter</button>
 					&nbsp;&nbsp; 
 					<a href="/AnnuaireRestaurant/ajouter" type="button"
 						class="btn btn-outline-danger">Effacer</a>
