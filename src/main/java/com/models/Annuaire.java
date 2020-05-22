@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
-
 import com.factory.FactoryDao;
 
 /**
@@ -16,6 +14,7 @@ public class Annuaire {
 
 	private static Annuaire instance;
 	private List<Restaurant> ListeDeResto;
+	private List<Restaurant> ListeDeRestoCourante;
 
 	/**
 	 * Constructeur privé
@@ -28,6 +27,8 @@ public class Annuaire {
 	public static Annuaire getInstance() {
 		if(instance == null) {
 			instance = new Annuaire();
+			instance.actialiserListeDeResto();
+
 		}
 		return instance;
 	}
@@ -80,6 +81,7 @@ public class Annuaire {
 	public void actialiserListeDeResto() {
 		try {
 			ListeDeResto = FactoryDao.getInstance().getRestaurantDao().getListeResto();
+			instance.ListeDeRestoCourante = instance.ListeDeResto;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -90,7 +92,9 @@ public class Annuaire {
 	 * @return liste vide si aucun resto ne correspond
 	 */
 	public List<Restaurant> getRestoByNomEtSpe (String nom, String specialite){
-		return getRestoBySpecialite(specialite, getRestoByNom(nom));
+		List<Restaurant> listeRestoRes = getRestoBySpecialite(specialite, getRestoByNom(nom));
+		ListeDeRestoCourante = listeRestoRes;
+		return listeRestoRes;
 
 	}
 	
@@ -119,6 +123,7 @@ public class Annuaire {
 				listeRestoRes.add(restaurant);
 			}
 		}
+		ListeDeRestoCourante = listeRestoRes;
 		return listeRestoRes;
 	}
 
@@ -135,6 +140,7 @@ public class Annuaire {
 				
 			}
 		}
+		ListeDeRestoCourante = listeRestoRes;
 		return listeRestoRes;
 	}
 
@@ -157,5 +163,15 @@ public class Annuaire {
 	public void setListeDeResto(List<Restaurant> listeDeResto) {
 		ListeDeResto = listeDeResto;
 	}
+
+	public List<Restaurant> getListeDeRestoCourante() {
+		return ListeDeRestoCourante;
+	}
+
+	public void setListeDeRestoCourante(List<Restaurant> listeDeRestoCourante) {
+		ListeDeRestoCourante = listeDeRestoCourante;
+	}
+	
+	
 
 }

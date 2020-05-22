@@ -30,9 +30,9 @@ public class ServletAnnuaire extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Annuaire.getInstance().actialiserListeDeResto();
 		System.out.println("Getttoo");
-		request.setAttribute("liste", Annuaire.getInstance().getListeDeResto());
+		request.setAttribute("liste", Annuaire.getInstance().getListeDeRestoCourante());
+		Annuaire.getInstance().actialiserListeDeResto();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
 
@@ -44,19 +44,21 @@ public class ServletAnnuaire extends HttpServlet {
 		if (request.getParameter("supprimer") != null) {
             	Annuaire.getInstance().delRestoId(Integer.parseInt(""+request.getParameter("supprimer")));
             	Annuaire.getInstance().actialiserListeDeResto();
-        		List<Restaurant> listeResto = Annuaire.getInstance().getListeDeResto();
-        		request.setAttribute("liste", listeResto);
+        		Annuaire.getInstance().getListeDeResto();
+
         }
 		if (request.getParameter("button_chercher") != null) {
 
         		String nom = request.getParameter("nom");
         		String specialite = request.getParameter("specialite");
-        		List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNomEtSpe(nom, specialite);
-        		System.out.println("ttttt:"+listeResto);
-        		request.setAttribute("liste", listeResto);
+        		//List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNomEtSpe(nom, specialite);
+        		//System.out.println("ttttt:"+listeResto);
+        		//request.setAttribute("liste", listeResto);
+        		Annuaire.getInstance().getRestoByNomEtSpe(nom, specialite);
         }
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
-	}
+		
+		String urlRed = "/AnnuaireRestaurant/annuaire";
+		response.sendRedirect(urlRed);}
 
 }
