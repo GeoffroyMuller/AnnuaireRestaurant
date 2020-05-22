@@ -47,12 +47,15 @@ public class ServletRestaurant extends HttpServlet {
 		}
 		if(request.getParameter("ajouter") != null) {
 			if(!request.getParameter("prix").isEmpty()) {
-				String nom = request.getParameter("nom");
-				String type = request.getParameter("type");
-
-				double prix = Double.parseDouble(request.getParameter("prix"));
-				String description= request.getParameter("description");
-				Annuaire.getInstance().getRestoById(id).addPlat(new Plat(id, nom, prix, type, description));
+				try {
+					String nom = request.getParameter("nom");
+					String type = request.getParameter("type");
+					double prix = Double.parseDouble(request.getParameter("prix"));
+					String description= request.getParameter("description");
+					Annuaire.getInstance().getRestoById(id).addPlat(new Plat(id, nom, prix, type, description));
+				}catch (NumberFormatException e) {
+					System.out.println("Format des nombres incorrect");
+				}
 			}
 		}
 		String urlRed = "/AnnuaireRestaurant/restaurant?id="+id;
