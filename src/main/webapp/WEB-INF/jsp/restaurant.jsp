@@ -33,7 +33,7 @@
 
 	<%@ include file="components/ajouter_plat.jsp"%>
 	<br>
-	<c:forEach items="${liste_plat}" var="variable">
+	<c:forEach items="${liste_plat}" var="plat">
 		<%@ include file="components/card_plat.jsp"%>
 	</c:forEach>
 	<br>

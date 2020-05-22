@@ -9,20 +9,20 @@ public class Plat {
 	private String type;
 	private String description;
 
-	public Plat(int id_resto, String nom, double prix, String typeDePlat, String description) {
+	public Plat(int id_resto, String nom, double prix, String type, String description) {
 		this.id_resto = id_resto;
 		this.nom = nom;
 		this.prix = prix;
-		this.type = typeDePlat;
+		this.type = type;
 		this.description = description;
 	}
 	
-	public Plat(int id, int id_resto, String nom, double prix, String typeDePlat, String description) {
+	public Plat(int id, int id_resto, String nom, double prix, String type, String description) {
 		this.id = id;
 		this.id_resto = id_resto;
 		this.nom = nom;
 		this.prix = prix;
-		this.type = typeDePlat;
+		this.type = type;
 		this.description = description;
 	}
 

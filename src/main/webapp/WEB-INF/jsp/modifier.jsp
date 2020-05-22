@@ -60,7 +60,7 @@
 			</div>
 			<div class="d-flex  justify-content-between">
 				<div class="input-group mb-3 ">
-				<input class="form" type="search" style="visibility: hidden"
+				<input class="form" type="hidden" style="visibility: hidden"
 					id="red" name="red" value="${ red }" /> 
 					<button class="btn btn-outline-primary my-2 my-sm-0" name="id" value="${ resto.getId() }" type="submit">Enregistrer</button>
 				</div>

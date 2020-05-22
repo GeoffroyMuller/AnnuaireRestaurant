@@ -42,7 +42,7 @@ public class PlatDao {
 		pstmt.setDouble(2, plat.getPrix());
 		pstmt.setString(3, plat.getType());
 		pstmt.setString(4, plat.getDescription());
-		pstmt.setInt(4, plat.getId());
+		pstmt.setInt(5, plat.getId());
 		pstmt.executeUpdate();
 		pstmt.close();
 	}

@@ -31,6 +31,7 @@ public class ServletAnnuaire extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Annuaire.getInstance().actialiserListeDeResto();
+		System.out.println("Getttoo");
 		request.setAttribute("liste", Annuaire.getInstance().getListeDeResto());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
@@ -47,9 +48,11 @@ public class ServletAnnuaire extends HttpServlet {
         		request.setAttribute("liste", listeResto);
         }
 		if (request.getParameter("button_chercher") != null) {
+
         		String nom = request.getParameter("nom");
         		String specialite = request.getParameter("specialite");
         		List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNomEtSpe(nom, specialite);
+        		System.out.println("ttttt:"+listeResto);
         		request.setAttribute("liste", listeResto);
         }
 

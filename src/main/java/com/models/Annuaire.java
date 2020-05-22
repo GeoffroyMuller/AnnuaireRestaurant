@@ -132,6 +132,7 @@ public class Annuaire {
 		for (Restaurant restaurant : listeResto) {
 			if(restaurant.getSpecialite().toLowerCase().contains(specialite)) {
 				listeRestoRes.add(restaurant);
+				
 			}
 		}
 		return listeRestoRes;

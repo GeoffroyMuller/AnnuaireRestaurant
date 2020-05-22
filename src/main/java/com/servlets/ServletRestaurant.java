@@ -41,11 +41,20 @@ public class ServletRestaurant extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		String nom = request.getParameter("nom");
-		String type = request.getParameter("type");
-		double prix = Double.parseDouble(request.getParameter("prix"));
-		String description= request.getParameter("description");
-		Annuaire.getInstance().getRestoById(id).addPlat(new Plat(id, nom, prix, type, description));
+		if(request.getParameter("supprimer") != null) {
+			int id_plat = Integer.parseInt(request.getParameter("supprimer"));
+			Annuaire.getInstance().getRestoById(id).delPlatId(id_plat);
+		}
+		if(request.getParameter("ajouter") != null) {
+			if(!request.getParameter("prix").isEmpty()) {
+				String nom = request.getParameter("nom");
+				String type = request.getParameter("type");
+
+				double prix = Double.parseDouble(request.getParameter("prix"));
+				String description= request.getParameter("description");
+				Annuaire.getInstance().getRestoById(id).addPlat(new Plat(id, nom, prix, type, description));
+			}
+		}
 		String urlRed = "/AnnuaireRestaurant/restaurant?id="+id;
 		response.sendRedirect(urlRed);
 		return;

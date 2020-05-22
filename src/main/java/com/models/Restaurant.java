@@ -69,6 +69,19 @@ public class Restaurant {
 	}
 	
 	/**
+	 * Cherche un plat par son id dans la liste du resto
+	 * @return null si aucun plat ne correspond
+	 */
+	public Plat getPlatById(int id) {
+		for (Plat plat : listeDePlats) {
+			if(plat.getId()==id) {
+				return plat;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Mets a jours la liste de plat du resto 'this' par rapport a la base de données
 	 */
 	public void actialiserListeDePlats() {

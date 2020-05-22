@@ -37,6 +37,10 @@
 		<servlet-name>ServletAjouter</servlet-name>
 		<servlet-class>com.servlets.ServletAjouter</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletModifierPlat</servlet-name>
+		<servlet-class>com.servlets.ServletModifierPlat</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>ServletAnnuaire</servlet-name>
@@ -53,6 +57,10 @@
 	<servlet-mapping>
 		<servlet-name>ServletAjouter</servlet-name>
 		<url-pattern>/ajouter</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletModifierPlat</servlet-name>
+		<url-pattern>/modifierplat</url-pattern>
 	</servlet-mapping>
 
 </web-app>

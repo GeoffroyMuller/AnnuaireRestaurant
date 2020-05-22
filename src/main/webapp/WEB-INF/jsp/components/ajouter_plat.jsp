@@ -1,8 +1,8 @@
 <div style="padding-bottom: 0em;"
 	class="list-group-item list-group-item-action mx-auto  bg-light w-50">
-	<form action="restaurant" method="post">
+	<form action="?id=${ resto.getId() }" method="post">
 		<div>
-
+			<p>Ajouter un plat</p>
 			<div class="row">
 				<div class="col">
 					<input type="text" class="form-control form-control-sm mb-3"
@@ -32,7 +32,7 @@
 					<div class="d-flex w-100 justify-content-between">
 						<div></div>
 						<button class="btn btn-outline-primary btn-sm my-2 my-sm-0"
-							id="id" name="id" value="${ resto.getId() }" type="submit">Ajouter</button>
+							id="ajouter" name="ajouter" value="${ resto.getId() }" type="submit">Ajouter</button>
 					</div>
 				</div>
 			</div>
