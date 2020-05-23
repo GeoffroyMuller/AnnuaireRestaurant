@@ -15,6 +15,7 @@ import com.models.Restaurant;
 public class ServletModifier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static String message;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -32,6 +33,8 @@ public class ServletModifier extends HttpServlet {
 		Restaurant resto = Annuaire.getInstance().getRestoById(Integer.parseInt(id));
 		request.setAttribute("resto", resto);
 		request.setAttribute("red", red);
+		request.setAttribute("msg", message);
+		message="";
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/modifier.jsp").forward(request, response);
 	}
 
@@ -39,18 +42,26 @@ public class ServletModifier extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String urlRed="/AnnuaireRestaurant/annuaire";
 		String id = request.getParameter("id");
 		String nom = request.getParameter("nom");
 		String adresse = request.getParameter("adresse");
 		String specialite= request.getParameter("specialite");
-		Annuaire.getInstance().modifResto(new Restaurant(Integer.parseInt(id), nom, adresse, specialite));
-		//this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/modifier.jsp").forward(request, response);
+		try {
+			Annuaire.getInstance().modifResto(new Restaurant(Integer.parseInt(id), nom, adresse, specialite));
+			message="";
+		} catch (IllegalArgumentException e) {
+			message = e.getMessage();
+		}
+		if(message.isEmpty()) {
 
-		String urlRed="/AnnuaireRestaurant/annuaire";
-		if (request.getParameter("red") != null) {
-			if (request.getParameter("red").equals("restaurant")) {
-				urlRed = "/AnnuaireRestaurant/restaurant?id="+id;
+			if (request.getParameter("red") != null) {
+				if (request.getParameter("red").equals("restaurant")) {
+					urlRed = "/AnnuaireRestaurant/restaurant?id="+id;
+				}
 			}
+		}else {
+			urlRed = "/AnnuaireRestaurant/modifier?id="+id+"&red="+request.getParameter("red");
 		}
 		response.sendRedirect(urlRed);
 		return;

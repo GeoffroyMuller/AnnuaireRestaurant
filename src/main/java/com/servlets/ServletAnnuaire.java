@@ -31,7 +31,7 @@ public class ServletAnnuaire extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("liste", Annuaire.getInstance().getListeDeRestoCourante());
-		Annuaire.getInstance().actialiserListeDeResto();
+		Annuaire.getInstance().actualiserListeDeResto();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
 	}
 
@@ -42,7 +42,7 @@ public class ServletAnnuaire extends HttpServlet {
 		// TODO Auto-generated method stub
 		if (request.getParameter("supprimer") != null) {
             	Annuaire.getInstance().delRestoId(Integer.parseInt(""+request.getParameter("supprimer")));
-            	Annuaire.getInstance().actialiserListeDeResto();
+            	Annuaire.getInstance().actualiserListeDeResto();
         		Annuaire.getInstance().getListeDeResto();
 
         }

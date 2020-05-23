@@ -31,7 +31,7 @@ public class ServletModifierPlat extends HttpServlet {
 		int id_plat = Integer.parseInt(request.getParameter("id_plat"));
 		int id_resto = Integer.parseInt(request.getParameter("id_resto"));
 		System.out.println("idp::"+id_plat+"   idr::"+id_resto);
-		Annuaire.getInstance().actialiserListeDeResto();
+		Annuaire.getInstance().actualiserListeDeResto();
 		Plat plat = Annuaire.getInstance().getRestoById(id_resto).getPlatById(id_plat);
 		request.setAttribute("id_resto", id_resto);
 		request.setAttribute("plat", plat);
