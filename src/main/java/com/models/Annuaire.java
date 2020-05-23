@@ -37,8 +37,17 @@ public class Annuaire {
 	 * Ajoute un resto a l'annuaire (ajoute en base et actualise sa liste)
 	 * @param resto
 	 */
-	public void addResto(Restaurant resto) {
+	public void addResto(Restaurant resto) throws IllegalArgumentException{
 		try {
+			actialiserListeDeResto();
+			if(!getRestoByNom(resto.getNom()).isEmpty()) {
+				actialiserListeDeResto();
+				throw new IllegalArgumentException("Erreur : Le nom du resto est deja existant");
+			}
+			if(!getRestoByAdresse(resto.getAdresse()).isEmpty()) {
+				actialiserListeDeResto();
+				throw new IllegalArgumentException("Erreur : L'adresse du resto est deja existante");
+			}
 			FactoryDao.getInstance().getRestaurantDao().creat(resto);
 			actialiserListeDeResto();
 		} catch (SQLException e) {
@@ -120,6 +129,22 @@ public class Annuaire {
 		nom = nom.toLowerCase();
 		for (Restaurant restaurant : ListeDeResto) {
 			if(restaurant.getNom().toLowerCase().contains(nom)) {
+				listeRestoRes.add(restaurant);
+			}
+		}
+		ListeDeRestoCourante = listeRestoRes;
+		return listeRestoRes;
+	}
+	
+	/**
+	 * Cherche les resto par leurs adresse dans la liste de l'annuaire
+	 * @return liste vide si aucun resto ne correspond
+	 */
+	public List<Restaurant> getRestoByAdresse (String adresse){
+		ArrayList<Restaurant> listeRestoRes = new ArrayList<Restaurant>();
+		adresse = adresse.toLowerCase();
+		for (Restaurant restaurant : ListeDeResto) {
+			if(restaurant.getAdresse().toLowerCase().contains(adresse)) {
 				listeRestoRes.add(restaurant);
 			}
 		}

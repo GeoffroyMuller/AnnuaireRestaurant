@@ -4,6 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Singleton DataBase Connexion
+ * permet la connexion a la base
+ * @author Geoff-Portable
+ *
+ */
 public class DataBase {
 	private static Connection instance;
 

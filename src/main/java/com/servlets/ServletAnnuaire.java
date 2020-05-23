@@ -30,7 +30,6 @@ public class ServletAnnuaire extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Getttoo");
 		request.setAttribute("liste", Annuaire.getInstance().getListeDeRestoCourante());
 		Annuaire.getInstance().actialiserListeDeResto();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/annuaire.jsp").forward(request, response);
@@ -51,9 +50,6 @@ public class ServletAnnuaire extends HttpServlet {
 
         		String nom = request.getParameter("nom");
         		String specialite = request.getParameter("specialite");
-        		//List<Restaurant> listeResto = Annuaire.getInstance().getRestoByNomEtSpe(nom, specialite);
-        		//System.out.println("ttttt:"+listeResto);
-        		//request.setAttribute("liste", listeResto);
         		Annuaire.getInstance().getRestoByNomEtSpe(nom, specialite);
         }
 

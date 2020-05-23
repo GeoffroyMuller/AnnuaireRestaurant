@@ -15,9 +15,10 @@
 	<form class="form-inline mx-auto p-4 w-50 " method="post"
 		action="ajouter">
 		<div class="form-inline mx-auto p-4 w-100">
-
+			<p>${ msg }</p>
 			<div class="d-flex w-100 justify-content-between">
 				<div class="input-group mb-3 w-100 justify-content-between">
+					
 					<h3>Ajouter un resto</h3>
 					<a href="/AnnuaireRestaurant/annuaire" class="text-decoration-none"><small>Retour</small></a>
 

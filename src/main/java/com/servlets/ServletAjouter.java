@@ -10,11 +10,12 @@ import com.models.Annuaire;
 import com.models.Restaurant;
 
 /**
- * Servlet implementation class ServletAjouter
+ * Servlet qui gere l'ajout d'un resto
  */
 public class ServletAjouter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static String message;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -27,7 +28,8 @@ public class ServletAjouter extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setAttribute("msg", message);
+		message="";
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ajouter.jsp").forward(request, response);
 	}
 
@@ -39,8 +41,12 @@ public class ServletAjouter extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String adresse = request.getParameter("adresse");
 		String specialite= request.getParameter("specialite");
-		System.out.println("resto ajouté");
-		Annuaire.getInstance().addResto(new Restaurant(nom, adresse, specialite));
+		try {
+			Annuaire.getInstance().addResto(new Restaurant(nom, adresse, specialite));
+			message = " Succes : le resto est ajouté !";
+		} catch (IllegalArgumentException e) {
+			message = e.getMessage();
+		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/ajouter.jsp").forward(request, response);
 	}
 
